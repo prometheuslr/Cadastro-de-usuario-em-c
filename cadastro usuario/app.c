@@ -48,7 +48,7 @@ void registerUser(){
     char senha[150];
     char confSenha[150];
     int idade;
-    float pesso, altura;
+    float peso, altura;
     int x = 0;
     bool y = false;
 
@@ -58,8 +58,8 @@ void registerUser(){
     scanf("%s",email);
     printf("Idade:\n");
     scanf("%d",&idade);
-    printf("Pesso:\n");
-    scanf("%f",&pesso);
+    printf("peso:\n");
+    scanf("%f",&peso);
     printf("Altura:\n");
     scanf("%f",&altura);
 
@@ -83,7 +83,7 @@ void registerUser(){
         }
     } while (y == false);
     
-    printf("Usuario registrado\n %s %s %d %f %f %s %s", nome, email, idade, pesso, altura, senha, confSenha);
+    printf("Usuario registrado\n %s %s %d %f %f %s %s", nome, email, idade, peso, altura, senha, confSenha);
 
 
 }
