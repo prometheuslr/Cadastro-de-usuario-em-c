@@ -16,6 +16,8 @@ typedef struct {
     char senha[150];    
 } User;
 
+
+
 int checkPassword(char senha[]){
     int comprimento = strlen(senha);
     int temMinuscula = 0;
@@ -58,11 +60,11 @@ void bdUser() {
         fprintf(arquivo, "ID,Nome,Email,Idade,Genero,Peso,Altura,Senha\n"); // Escrevendo cabeçalho no arquivo
         fclose(arquivo);
     } else {
-        fclose(arquivo); // Fechando o arquivo se ele já existir
+        fclose(arquivo); 
     }
 }
 
-
+//Adiciona o usuario 
 void addUserBd(User usuario) {
     FILE *arquivo;
     arquivo = fopen("usuarios.csv", "a"); // Abrindo o arquivo no modo de escrita (append)
@@ -74,11 +76,11 @@ void addUserBd(User usuario) {
     fclose(arquivo);
 }
 
-
-void viewUseredi() {
+//Lê o arquivo usuarios.csv
+void viewUser() {
     FILE *arquivo;
-    char linha[256]; // Tamanho arbitrário para ler uma linha do arquivo
-    arquivo = fopen("usuarios.csv", "r"); // Abrindo o arquivo no modo de leitura
+    char linha[256]; 
+    arquivo = fopen("usuarios.csv", "r"); 
     if (arquivo == NULL) {
         printf("Erro ao abrir o arquivo.");
         exit(1);
@@ -93,9 +95,10 @@ void viewUseredi() {
     fclose(arquivo);
 }
 
+//Cria o ID
 int userID() {
     FILE *arquivo;
-    arquivo = fopen("usuarios.csv", "r"); // Abrindo o arquivo no modo de leitura
+    arquivo = fopen("usuarios.csv", "r"); 
     if (arquivo == NULL) {
         return 1; // Retorna 1 se o arquivo não existir, indicando que este será o primeiro ID
     }
@@ -104,7 +107,7 @@ int userID() {
     int maxId = 0;
 
     // Lendo e analisando cada linha do arquivo
-    char linha[256]; // Tamanho arbitrário para ler uma linha do arquivo
+    char linha[256]; 
     while (fgets(linha, sizeof(linha), arquivo)) {
         // Usando sscanf para extrair o ID da linha
         int id;
@@ -120,7 +123,7 @@ int userID() {
     return maxId + 1;
 }
 
-
+//Cadastrar usuario
 void registerUser() {
     User novoUsuario;
     printf("Nome:\n");
@@ -143,13 +146,13 @@ void registerUser() {
         scanf("%s", novoUsuario.senha);
     } while (checkPassword(novoUsuario.senha) == 0);
 
-    novoUsuario.id = userID(); // Implemente a função userID() para gerar um novo ID único para o usuário
+    novoUsuario.id = userID(); 
 
     addUserBd(novoUsuario);
     printf("Usuário registrado\n");
 }
 
-
+//Editar usuario 
 void editUser(int id) {
     FILE *arquivo;
     FILE *temp;
@@ -192,7 +195,7 @@ void editUser(int id) {
             do {
                 printf("Genero (M/F):\n");
                 scanf(" %c", &usuario.genero);
-                usuario.genero = toupper(usuario.genero); // Convertendo para maiúsculas
+                usuario.genero = toupper(usuario.genero);
             } while (usuario.genero != 'M' && usuario.genero != 'F');
             printf("Peso:\n");
             scanf("%f", &usuario.peso);
@@ -222,6 +225,7 @@ void editUser(int id) {
     }
 }
 
+//excluir usuario
 void deleteUser(int id) {
     FILE *arquivo;
     FILE *temp;
@@ -261,7 +265,7 @@ void deleteUser(int id) {
         printf("Usuario não encontrado.\n");
     }
 }
-
+//mMenu principal 
 void menu() {
     int y;
     int opc; 
@@ -278,7 +282,7 @@ void menu() {
                 break;
             case 1:
                 printf("==============\nVisualizar Usuarios\n==============\n");
-                viewUseredi();
+                viewUser();
                 menu();
                 break;
             case 2:
