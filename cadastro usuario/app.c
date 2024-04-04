@@ -16,8 +16,6 @@ typedef struct {
     char senha[150];    
 } User;
 
-
-
 int checkPassword(char senha[]){
     int comprimento = strlen(senha);
     int temMinuscula = 0;
@@ -279,6 +277,7 @@ void menu() {
     } else {
         switch (opc) {
             case 0:
+                exit(1);
                 break;
             case 1:
                 printf("==============\nVisualizar Usuarios\n==============\n");
