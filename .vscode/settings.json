@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "sqlite3.h": "c",
+        "stdbool.h": "c"
+    }
+}

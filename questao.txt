@@ -1,6 +1,0 @@
-Você foi contrato para criar um sistema de cadastro de usuários e que seja capaz de gerar 
-senhas seguras para os usuários cadastrados, neste projeto, você criará um sistema 
-simples para cadastrar usuários, onde poderá adicionar, visualizar, editar e excluir 
-informações dos usuários e também gerar uma nova senha complexa. O programa deve gerar 
-senhas seguras com base nos requisitos do usuário, como comprimento, 
-inclusão de letras maiúsculas, minúsculas, números ecaracteres especiais.
